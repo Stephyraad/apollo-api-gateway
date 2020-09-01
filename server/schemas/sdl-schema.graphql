@@ -1,0 +1,95 @@
+type Query {
+  getAllUsers: [TUser!]!
+  getUsersByRole(role: UserRoleEnum): [TUser!]!
+  getUsersById(id: ID!): [TUser!]!
+  getAllPosts: [TPost!]!
+  getPostsByUserId(id: ID!): [TPost!]!
+  getPostsByTag(tags: [PostTagsEnum]): [TPost!]!
+}
+
+"""User type definition"""
+type TUser {
+  id: ID!
+  username: String!
+  email: String
+  phone: String
+  firstName: String
+  lastName: String
+  role: UserRoleEnum!
+  createdAt: TDateTime!
+  updatedAt: TDateTime
+}
+
+enum UserRoleEnum {
+  ADMIN
+  MODERATOR
+  WRITER
+  READER
+}
+
+"""An ISO-8601 encoded UTC date string."""
+scalar TDateTime
+
+"""Post type definition"""
+type TPost {
+  id: ID!
+  user: TUser!
+  title: String!
+  body: String!
+  tags: TTags
+  isPublished: Boolean
+  createdAt: TDateTime!
+  updatedAt: TDateTime
+  publishedAt: TDateTime
+}
+
+"""Tags type definition"""
+type TTags {
+  tags: [PostTagsEnum]
+}
+
+enum PostTagsEnum {
+  FINANCE
+  TECH
+  ENVIRONMENTAL
+}
+
+type Mutation {
+  createUser(input: TCreateUserInput!): TCreateUserPayload
+  createUsers(input: [TCreateUserInput!]!): TCreateUsersPayload
+  createPost(input: TCreatePostInput!): TCreatePostPayload
+}
+
+"""Create user payload type definition"""
+type TCreateUserPayload {
+  user: TUser!
+}
+
+"""Create user input type definition"""
+input TCreateUserInput {
+  username: String!
+  email: String
+  phone: String
+  firstName: String
+  lastName: String
+  role: UserRoleEnum = READER
+}
+
+"""Create users payload type definition"""
+type TCreateUsersPayload {
+  users: [TUser]
+}
+
+"""Create post payload type definition"""
+type TCreatePostPayload {
+  post: TPost!
+}
+
+"""Create post input type definition"""
+input TCreatePostInput {
+  user: TUser!
+  title: String!
+  body: String!
+  tags: [PostTagsEnum]
+  isPublished: Boolean
+}
