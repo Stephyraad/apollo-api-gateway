@@ -1,2 +1,2 @@
-export * from './user-queries';
-export * from './post-queries';
+export * from './userQueries';
+export * from './postQueries';

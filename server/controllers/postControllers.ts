@@ -1,6 +1,6 @@
-import { TDateTime } from '../../types';
-import { generateId } from '../../utils';
-import { posts } from '../../../mocks/db/posts-db';
+import { TDateTime } from '../types';
+import { generateId } from '../utils';
+import { posts } from '../../mocks/db/posts-db';
 
 export const getAllPosts = () => posts;
 

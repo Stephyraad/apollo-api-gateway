@@ -1,8 +1,8 @@
 import { GraphQLNonNull } from 'graphql';
-import { TCreatePostPayload, TCreatePostInput } from '../../types';
-import { createPost } from '../../controllers';
+import { TCreatePostPayload, TCreatePostInput } from '../types';
+import { createPost } from '../controllers/postControllers';
 
-export const PostMutations = {
+export const postMutations = {
   createPost: {
     type: TCreatePostPayload,
     args: {

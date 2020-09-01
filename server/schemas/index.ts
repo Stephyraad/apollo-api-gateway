@@ -1,21 +1,21 @@
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
 
-import { UserQueries, PostQueries } from '../queries';
-import { UserMutations, PostMutations } from '../mutations';
+import { userQueries, postQueries } from '../queries';
+import { userMutations, postMutations } from '../mutations';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'Query',
     fields: () => ({
-      ...UserQueries,
-      ...PostQueries,
+      ...userQueries,
+      ...postQueries,
     }),
   }),
   mutation: new GraphQLObjectType({
     name: 'Mutation',
     fields: () => ({
-      ...UserMutations,
-      ...PostMutations,
+      ...userMutations,
+      ...postMutations,
     }),
   }),
 });

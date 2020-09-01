@@ -1,13 +1,8 @@
-import {
-  GraphQLID,
-  GraphQLList,
-  GraphQLNonNull,
-} from 'graphql';
-import { TUser } from '../../types';
-import { UserRoleEnum } from '../../enums';
-import { getAllUsers } from '../../controllers/user-controllers';
+import { GraphQLID, GraphQLList, GraphQLNonNull } from 'graphql';
+import { TUser, UserRoleEnum } from '../types';
+import { getAllUsers } from '../controllers/userControllers';
 
-export const UserQueries = {
+export const userQueries = {
   getAllUsers: {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(TUser))),
     resolve: (_source) => {
@@ -32,7 +27,7 @@ export const UserQueries = {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(TUser))),
     args: {
       id: {
-        type:  new GraphQLNonNull(GraphQLID),
+        type: new GraphQLNonNull(GraphQLID),
       },
     },
     resolve: (_source, { id }) => {

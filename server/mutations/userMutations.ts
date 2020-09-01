@@ -1,11 +1,8 @@
-import {
-  GraphQLList,
-  GraphQLNonNull,
-} from 'graphql';
-import { TCreateUserPayload, TCreateUsersPayload, TCreateUserInput } from '../../types'
-import { createUser, createUsers } from '../../controllers';
+import { GraphQLList, GraphQLNonNull } from 'graphql';
+import { TCreateUserPayload, TCreateUsersPayload, TCreateUserInput } from '../types';
+import { createUser, createUsers } from '../controllers/userControllers';
 
-export const UserMutations = {
+export const userMutations = {
   createUser: {
     type: TCreateUserPayload,
     args: {

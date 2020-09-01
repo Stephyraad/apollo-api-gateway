@@ -1,9 +1,8 @@
 import { GraphQLID, GraphQLList, GraphQLNonNull } from 'graphql';
-import { TPost } from '../../types';
-import { PostTagsEnum } from '../../enums';
-import { getAllPosts, getPostsByUserId, getPostsByTags } from '../../controllers/post-controllers';
+import { TPost, PostTagsEnum } from '../types';
+import { getAllPosts, getPostsByUserId, getPostsByTags } from '../controllers/postControllers';
 
-export const PostQueries = {
+export const postQueries = {
   getAllPosts: {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(TPost))),
     resolve: async (_source) => {

@@ -3,11 +3,29 @@ import {
   GraphQLList,
   GraphQLString,
   GraphQLNonNull,
+  GraphQLEnumType,
   GraphQLObjectType,
-  GraphQLInputObjectType
+  GraphQLInputObjectType,
 } from 'graphql';
-import { UserRoleEnum } from '../../enums';
-import { TDateTime } from '../custom';
+import { TDateTime } from './custom';
+
+export const UserRoleEnum = new GraphQLEnumType({
+  name: 'UserRoleEnum',
+  values: {
+    ADMIN: {
+      value: 0,
+    },
+    MODERATOR: {
+      value: 1,
+    },
+    WRITER: {
+      value: 2,
+    },
+    READER: {
+      value: 3,
+    },
+  },
+});
 
 export const TUser = new GraphQLObjectType({
   name: 'TUser',

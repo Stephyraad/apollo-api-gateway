@@ -1,6 +1,6 @@
 import isEmail from 'validator/lib/isEmail';
-import { generateId } from '../../utils';
-import users from '../../../mocks/db/users-db';
+import { generateId } from '../utils';
+import users from '../../mocks/db/users-db';
 
 export const createUser = (input) => {
   if (!input.email) {
@@ -29,8 +29,8 @@ export const createUsers = (inputs) => {
     return {
       id: generateId(),
       ...input,
-    }
-  })
+    };
+  });
   users.push(...newUsers);
   return newUsers;
 };

@@ -4,11 +4,26 @@ import {
   GraphQLString,
   GraphQLNonNull,
   GraphQLBoolean,
+  GraphQLEnumType,
   GraphQLObjectType,
   GraphQLInputObjectType,
 } from 'graphql';
-import { PostTagsEnum } from '../../enums';
-import { TUser, TDateTime } from '../';
+import { TUser, TDateTime } from './';
+
+export const PostTagsEnum = new GraphQLEnumType({
+  name: 'PostTagsEnum',
+  values: {
+    FINANCE: {
+      value: 'finance',
+    },
+    TECH: {
+      value: 'tech',
+    },
+    ENVIRONMENTAL: {
+      value: 'environmental',
+    },
+  },
+});
 
 export const TTags = new GraphQLObjectType({
   name: 'TTags',
@@ -53,16 +68,6 @@ export const TPost = new GraphQLObjectType({
     },
   }),
 });
-
-// export const TGetPostsByUserIdInput = new GraphQLInputObjectType({
-//   name: 'TGetPostsByUserIdInput',
-//   description: 'Get posts by user id input type definition',
-//   fields: () => ({
-//     user: {
-//       type: new GraphQLNonNull(TUser),
-//     },
-//   })
-// })
 
 export const TCreatePostInput = new GraphQLInputObjectType({
   name: 'TCreatePostInput',
